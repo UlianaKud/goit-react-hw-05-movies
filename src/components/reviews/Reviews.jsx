@@ -33,6 +33,7 @@ const Reviews = () => {
         .catch(err => console.error(err));
     };
     getReviews();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

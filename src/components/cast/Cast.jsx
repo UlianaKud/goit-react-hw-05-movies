@@ -29,6 +29,7 @@ const Cast = () => {
         .catch(err => console.error(err));
     };
     getActors();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
