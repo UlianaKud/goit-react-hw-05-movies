@@ -1,0 +1,40 @@
+.movies {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form {
+  display: flex;
+  gap: 20px;
+  height: 30px;
+}
+.input {
+  width: 300px;
+  outline-color: transparent;
+  border-color: #7e7c7c;
+  &:hover,
+  &:focus {
+    outline-color: rgb(161, 189, 143);
+  }
+}
+.button {
+  min-width: 60px;
+  cursor: pointer;
+  border: none;
+  background-color: #7e7c7c;
+  color: #000000;
+  &:hover,
+  &:focus {
+    background-color: rgb(161, 189, 143);
+  }
+}
+.moviesList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+  }
+  .moviesItem {
+    font-size: 20px;
+  }

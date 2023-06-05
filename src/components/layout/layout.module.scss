@@ -1,0 +1,21 @@
+.wrapper {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.nav {
+  display: flex;
+  gap: 20px;
+  padding: 10px 5px;
+  // width: max-content;
+  box-shadow: 0px 5px 9px 5px #7e7c7c;
+}
+.link{
+    text-decoration: none;
+    color: rgb(97, 140, 206);
+    &:hover, &:focus{
+      color: rgb(223, 138, 138);
+    }
+}
