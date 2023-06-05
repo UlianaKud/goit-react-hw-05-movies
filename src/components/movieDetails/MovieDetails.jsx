@@ -1,5 +1,5 @@
-import { useParams, NavLink, useLocation } from 'react-router-dom';
-import { useEffect, useState, useRef } from 'react';
+import { useParams, NavLink, useLocation, Outlet } from 'react-router-dom';
+import { useEffect, useState, useRef, Suspense } from 'react';
 import scss from './movieDetails.module.scss';
 
 const MovieDetails = () => {
@@ -14,7 +14,7 @@ const MovieDetails = () => {
   const baseImgUrl = 'https://image.tmdb.org/t/p/w400';
   const location = useLocation();
   const backLinkLocation = useRef(location.state?.from ?? '/movies');
-  
+
   useEffect(() => {
     setLoading(true);
     const options = {
@@ -48,7 +48,7 @@ const MovieDetails = () => {
       })
       .catch(err => console.error(err))
       .finally(() => {
-        setLoading(false)
+        setLoading(false);
       });
   }, [movieId]);
   return (
@@ -113,6 +113,9 @@ const MovieDetails = () => {
               </div>
             </div>
           </div>
+          <Suspense fallback={<div>...Loading</div>}>
+            <Outlet />
+          </Suspense>
         </div>
       )}
     </>

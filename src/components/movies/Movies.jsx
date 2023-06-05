@@ -1,11 +1,6 @@
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState } from 'react';
 import scss from './movies.module.scss';
-import {
-  NavLink,
-  useSearchParams,
-  useLocation,
-  Outlet,
-} from 'react-router-dom';
+import { NavLink, useSearchParams, useLocation } from 'react-router-dom';
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState('');
@@ -88,9 +83,6 @@ const Movies = () => {
           );
         })}
       </ul>
-      <Suspense fallback={<div>...Loading</div>}>
-        <Outlet />
-      </Suspense>
     </div>
   );
 };
