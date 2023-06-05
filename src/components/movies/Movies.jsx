@@ -36,6 +36,7 @@ const Movies = () => {
           setMovies([]);
           return;
         }
+        setError('');
         setMovies([...results]);
       })
       .catch(err => console.error(err));
