@@ -1,6 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import scss from './movies.module.scss';
-import { NavLink, useSearchParams, useLocation } from 'react-router-dom';
+import {
+  NavLink,
+  useSearchParams,
+  useLocation,
+  Outlet,
+} from 'react-router-dom';
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState('');
@@ -11,8 +16,8 @@ const Movies = () => {
   useEffect(() => {
     if (queryParams === '') return;
     getMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   const getMovies = () => {
     const options = {
       method: 'GET',
@@ -83,6 +88,9 @@ const Movies = () => {
           );
         })}
       </ul>
+      <Suspense fallback={<div>...Loading</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

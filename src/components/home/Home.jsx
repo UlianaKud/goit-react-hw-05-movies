@@ -5,26 +5,26 @@ const Home = () => {
   const [topMovies, setTopMovies] = useState([]);
   const location = useLocation();
 
-  const options = {
-    headers: {
-      accept: 'application/json',
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzU0Y2I3MjliYTc5OWE4NGNiOGRhOWYzYjNjMmVkYiIsInN1YiI6IjY0NzRhNGQ5OTQwOGVjMDBlMTRkODI0MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jM0pFTGW4Ag5RFeZbbYFfkH78J8eInez-TSfyWolnBg',
-    },
-  };
-  const getTopMovies = () =>
-    fetch(
-      'https://api.themoviedb.org/3/trending/movie/day?language=en-US',
-      options
-    )
-      .then(response => response.json())
-      .then(response => {
-        const { results } = response;
-        setTopMovies([...results]);
-      })
-      .catch(err => console.error(err));
-
   useEffect(() => {
+    const options = {
+      headers: {
+        accept: 'application/json',
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzU0Y2I3MjliYTc5OWE4NGNiOGRhOWYzYjNjMmVkYiIsInN1YiI6IjY0NzRhNGQ5OTQwOGVjMDBlMTRkODI0MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jM0pFTGW4Ag5RFeZbbYFfkH78J8eInez-TSfyWolnBg',
+      },
+    };
+    const getTopMovies = () =>
+      fetch(
+        'https://api.themoviedb.org/3/trending/movie/day?language=en-US',
+        options
+      )
+        .then(response => response.json())
+        .then(response => {
+          const { results } = response;
+          setTopMovies([...results]);
+        })
+        .catch(err => console.error(err));
+
     getTopMovies();
   }, []);
   return (

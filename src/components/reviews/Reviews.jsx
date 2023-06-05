@@ -7,29 +7,32 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [message, setMessage] = useState('');
   useEffect(() => {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzU0Y2I3MjliYTc5OWE4NGNiOGRhOWYzYjNjMmVkYiIsInN1YiI6IjY0NzRhNGQ5OTQwOGVjMDBlMTRkODI0MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jM0pFTGW4Ag5RFeZbbYFfkH78J8eInez-TSfyWolnBg',
-      },
-    };
+    const getReviews = () => {
+      const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization:
+            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzU0Y2I3MjliYTc5OWE4NGNiOGRhOWYzYjNjMmVkYiIsInN1YiI6IjY0NzRhNGQ5OTQwOGVjMDBlMTRkODI0MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jM0pFTGW4Ag5RFeZbbYFfkH78J8eInez-TSfyWolnBg',
+        },
+      };
 
-    fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1`,
-      options
-    )
-      .then(response => response.json())
-      .then(response => {
-        const { results } = response;
-        if (!results.length) {
-          setMessage(`We don't have any reviews for this movie.`);
-          return;
-        }
-        setReviews([...results]);
-      })
-      .catch(err => console.error(err));
+      fetch(
+        `https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1`,
+        options
+      )
+        .then(response => response.json())
+        .then(response => {
+          const { results } = response;
+          if (!results.length) {
+            setMessage(`We don't have any reviews for this movie.`);
+            return;
+          }
+          setReviews([...results]);
+        })
+        .catch(err => console.error(err));
+    };
+    getReviews();
   }, []);
 
   return (
